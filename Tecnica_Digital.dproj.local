@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/01/25 14:50:37.000.374,=C:\Users\DESARROLLO\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/01/25 14:52:31.000.264,C:\Users\DESARROLLO\Documents\Tecnico_Pijaos\Unit1.dfm=C:\Users\DESARROLLO\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2023/01/25 14:52:31.000.264,C:\Users\DESARROLLO\Documents\Tecnico_Pijaos\Unit1.pas=C:\Users\DESARROLLO\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/01/25 14:52:41.000.700,C:\Users\DESARROLLO\Documents\Tecnico_Pijaos\Tecnica_Pijaos.dproj=C:\Users\DESARROLLO\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2023/01/25 17:43:22.000.239,C:\Users\DESARROLLO\Documents\Tecnico_Pijaos\Unit1.dfm=C:\Users\DESARROLLO\Documents\Tecnico_Pijaos\UPrincipal.dfm</Transaction>
+    <Transaction>2023/01/25 17:43:22.000.239,C:\Users\DESARROLLO\Documents\Tecnico_Pijaos\Unit1.pas=C:\Users\DESARROLLO\Documents\Tecnico_Pijaos\UPrincipal.pas</Transaction>
+    <Transaction>2023/01/25 17:45:52.000.231,C:\Users\DESARROLLO\Documents\Tecnico_Pijaos\Tecnica_Pijaos.dproj=C:\Users\DESARROLLO\Documents\Tecnico_Pijaos\Tecnica_Digital.dproj</Transaction>
+    <Transaction>2023/01/26 07:46:20.000.324,=C:\Users\DESARROLLO\Documents\Tecnico_Digital\Unit1.pas</Transaction>
+    <Transaction>2023/01/26 07:46:38.000.292,=C:\Users\DESARROLLO\Documents\Tecnico_Digital\Unit2.pas</Transaction>
+    <Transaction>2023/01/26 07:47:38.000.594,C:\Users\DESARROLLO\Documents\Tecnico_Digital\Unit2.dfm=C:\Users\DESARROLLO\Documents\Tecnico_Digital\Umodulo.dfm</Transaction>
+    <Transaction>2023/01/26 07:47:38.000.594,C:\Users\DESARROLLO\Documents\Tecnico_Digital\Unit2.pas=C:\Users\DESARROLLO\Documents\Tecnico_Digital\Umodulo.pas</Transaction>
+    <Transaction>2023/01/27 13:20:11.615,=C:\Users\DESARROLLO\Documents\Tecnico_Digital-001\Tecnico_Digital\Tecnico_Digital\Unit1.pas</Transaction>
+    <Transaction>2023/01/27 13:21:26.774,C:\Users\DESARROLLO\Documents\Tecnico_Digital-001\Tecnico_Digital\Tecnico_Digital\UDetalleFactura.pas=C:\Users\DESARROLLO\Documents\Tecnico_Digital-001\Tecnico_Digital\Tecnico_Digital\Unit1.pas</Transaction>
+    <Transaction>2023/01/27 13:21:26.774,C:\Users\DESARROLLO\Documents\Tecnico_Digital-001\Tecnico_Digital\Tecnico_Digital\UDetalleFactura.dfm=C:\Users\DESARROLLO\Documents\Tecnico_Digital-001\Tecnico_Digital\Tecnico_Digital\Unit1.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

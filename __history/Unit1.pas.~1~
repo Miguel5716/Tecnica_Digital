@@ -1,0 +1,122 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.ExtCtrls;
+
+type
+  TForm1 = class(TForm)
+    Panel1: TPanel;
+    Label6: TLabel;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Edit1: TEdit;
+    Button1: TButton;
+    Button2: TButton;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    TabSheet2: TTabSheet;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  n, i: Integer;
+  a, b, c: Int64;
+  resultado: string;
+  serie: array[0..19] of Int64;
+
+begin
+
+  if not (TryStrToInt(Edit1.Text, n)) or (n <= 0) or (n > 20) then
+  begin
+    ShowMessage('Por favor ingrese un número positivo entre 1 y 20 ');
+    exit;
+  end
+  else
+  begin
+    a := 1;
+    b := 1;
+    serie[0] := a;
+    serie[1] := b;
+
+    //Se calcula la serie Fibonacci teniendo en cuenta la cantidad ingresada
+    for i := 2 to n-1 do
+    begin
+      c := a + b;
+      serie[i] := c;
+      a := b;
+      b := c;
+    end;
+    resultado := '';
+    //Ciclo para asiganra el numero a la variable que contiene el resultado de la serie
+    for i := 0 to n-1 do
+    begin
+      resultado := resultado + IntToStr(serie[i]) + ', ';
+    end;
+    ShowMessage('El resultado de la serie Fibonacci es: '+resultado);
+  end;
+
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+var
+  h,he,
+  htt, //VARIABLE INDICA LAS HORAS TRABAJAS TOTALES
+  hte, //VARIABLE INDICA LAS HORAS EXTRAS TRABAJAS
+  total: Integer;
+  nom_empleado: string;
+begin
+//DEFINE VALOR DE LAS HORAS Y LAS HORAS EXTRAS
+  h  := 15000;
+  he := 19000;
+
+//ASIGNA NOMBRE EMPLEADO
+  nom_empleado := trim(Edit2.Text);
+
+//VALIDA TIPO DE DATO Y ASIGNA HORAS TOTALES TRABAJADAS
+   if not TryStrToInt(Edit3.Text, htt)  then
+  begin
+    ShowMessage('Tipo de dato invalido en las horas trabajadas ');
+    exit;
+  end
+  else
+  begin
+    if htt < 35 then
+    begin
+      total := h * htt;
+      ShowMessage('Al empleado '+ nom_empleado +' se le debe pagar la suma de $ ' + IntToStr(total)+ ' pesos');
+    end
+    else if htt > 35 then
+    begin
+      hte := htt - 35;         //SE DISCRIMIAN LAS HORAS EXTRAS
+      htt := htt - hte;        //SE DISCRIMAN LAS HORAS CON PAGO NORMAL
+
+      //CALCULO DE TOTAL DEL PAGO
+      total := (hte * he) + (h * htt);
+
+      ShowMessage('Al empleado '+ nom_empleado +' se le debe pagar la suma de $ ' + IntToStr(total) + ' pesos');
+    end;
+  end;
+end;
+
+end.

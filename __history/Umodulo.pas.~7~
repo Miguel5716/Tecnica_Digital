@@ -1,0 +1,46 @@
+unit Umodulo;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Data.Win.ADODB;
+
+type
+  TModulo = class(TForm)
+    DtConODBC: TADOConnection;
+    Dtconexion: TADOConnection;
+    QryClientes: TADOQuery;
+    QryClientesID_CLIENTE: TLargeintField;
+    QryClientesNOMBRE: TStringField;
+    QryClientesDIRECCION: TStringField;
+    QryProductos: TADOQuery;
+    QryEncabezadoFac: TADOQuery;
+    QryDetalleFac: TADOQuery;
+    QryProductosID_PRODUCTO: TAutoIncField;
+    QryProductosNOMBRE: TStringField;
+    QryProductosVALOR: TStringField;
+    QryConsecutivo: TADOQuery;
+    QryConsecutivoCONSECUTIVO: TStringField;
+    QryEncabezadoFacID_FACTURA: TIntegerField;
+    QryEncabezadoFacFECHA: TDateTimeField;
+    QryEncabezadoFacID_CLIENTE: TLargeintField;
+    QryEncabezadoFacTOTAL: TLargeintField;
+    QryDetalleFacID_FACTURA: TIntegerField;
+    QryDetalleFacID_PRODUCTO: TIntegerField;
+    QryDetalleFacCANTIDAD: TStringField;
+    QryDetalleFacVALOR: TIntegerField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Modulo: TModulo;
+
+implementation
+
+{$R *.dfm}
+
+end.
