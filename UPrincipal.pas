@@ -51,9 +51,6 @@ type
     Eliminar1: TMenuItem;
     Editar1: TMenuItem;
     QryVerClientes: TADOQuery;
-    QryVerClientesID_CLIENTE: TLargeintField;
-    QryVerClientesNOMBRE: TStringField;
-    QryVerClientesDIRECCION: TStringField;
     GroupBox1: TGroupBox;
     DBGrid2: TDBGrid;
     PopupMenu2: TPopupMenu;
@@ -62,9 +59,6 @@ type
     MenuItem3: TMenuItem;
     DtsVerProductos: TDataSource;
     QryVerProductos: TADOQuery;
-    QryVerProductosID_PRODUCTO: TAutoIncField;
-    QryVerProductosNOMBRE: TStringField;
-    QryVerProductosVALOR: TStringField;
     Label11: TLabel;
     Label15: TLabel;
     Edit7: TEdit;
@@ -91,13 +85,19 @@ type
     PopupMenu3: TPopupMenu;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
-    QryVerFacturasID_FACTURA: TStringField;
-    QryVerFacturasFECHA: TDateTimeField;
-    QryVerFacturasID_CLIENTE: TLargeintField;
-    QryVerFacturasTOTAL: TLargeintField;
     Label24: TLabel;
     Label25: TLabel;
     Label26: TLabel;
+    QryVerFacturasNUMERO: TStringField;
+    QryVerFacturasFECHA: TDateTimeField;
+    QryVerFacturasCLIENTE: TLargeintField;
+    QryVerFacturasTOTAL: TLargeintField;
+    QryVerClientesCLIENTE: TLargeintField;
+    QryVerClientesNOMBRE_CLIENTE: TStringField;
+    QryVerClientesDIRECCION: TStringField;
+    QryVerProductosPRODUCTO: TAutoIncField;
+    QryVerProductosNOMBRE_PRODUCTO: TStringField;
+    QryVerProductosVALOR: TStringField;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -230,7 +230,7 @@ begin
 
       Modulo.QryClientes.close;
       Modulo.QryClientes.SQL.Clear;
-      Modulo.QryClientes.SQL.Add(' SELECT * FROM CLIENTES WHERE ID_CLIENTE = :ID_CLIENTE ');
+      Modulo.QryClientes.SQL.Add(' SELECT * FROM CLIENTES WHERE CLIENTE = :ID_CLIENTE ');
       Modulo.QryClientes.Parameters[0].Value := StrToInt(Edit4.Text);
       Modulo.QryClientes.Open;
       //VALIDA QUE NO EXISTA EL NUMERO DE DOCUMENTO
@@ -243,9 +243,9 @@ begin
             Modulo.Dtconexion.BeginTrans;
             Modulo.QryClientes.Edit;
 
-            Modulo.QryClientesID_CLIENTE.Value := StrToInt(Edit4.Text);
-            Modulo.QryClientesNOMBRE.Value     := Trim(Edit5.Text);
-            Modulo.QryClientesDIRECCION.Value  := Trim(Edit6.Text);
+            Modulo.QryClientesCLIENTE.Value         := StrToInt(Edit4.Text);
+            Modulo.QryClientesNOMBRE_CLIENTE.Value  := Trim(Edit5.Text);
+            Modulo.QryClientesDIRECCION.Value       := Trim(Edit6.Text);
 
             Modulo.QryClientes.Post;
 
@@ -282,9 +282,9 @@ begin
             Modulo.QryClientes.Open;
             Modulo.QryClientes.Insert;
 
-            Modulo.QryClientesID_CLIENTE.Value := StrToInt(Edit4.Text);
-            Modulo.QryClientesNOMBRE.Value     := Trim(Edit5.Text);
-            Modulo.QryClientesDIRECCION.Value  := Trim(Edit6.Text);
+            Modulo.QryClientesCLIENTE.Value        := StrToInt(Edit4.Text);
+            Modulo.QryClientesNOMBRE_CLIENTE.Value := Trim(Edit5.Text);
+            Modulo.QryClientesDIRECCION.Value      := Trim(Edit6.Text);
 
             Modulo.QryClientes.Post;
 
@@ -336,7 +336,7 @@ begin
             Modulo.Dtconexion.BeginTrans;
             Modulo.QryProductos.Edit;
 
-            Modulo.QryProductosNOMBRE.Value := Trim(Edit9.Text);
+            Modulo.QryProductosNOMBRE_PRODUCTO.Value := Trim(Edit9.Text);
             Modulo.QryProductosVALOR.Value := Edit8.Text;
 
             Modulo.QryProductos.Post;
@@ -372,7 +372,7 @@ begin
           Modulo.QryProductos.Open;
           Modulo.QryProductos.Insert;
 
-          Modulo.QryProductosNOMBRE.Value := Trim(Edit9.Text);
+          Modulo.QryProductosNOMBRE_PRODUCTO.Value := Trim(Edit9.Text);
           Modulo.QryProductosVALOR.Value := Edit8.Text;
 
 
@@ -447,12 +447,10 @@ begin
 
             SQLDateTime := FormatDateTime('dd/mm/yyyy hh:nn:ss', Now);
 
-            Modulo.QryEncabezadoFacID_FACTURA.Value := Idfactura;
+            Modulo.QryEncabezadoFacNUMERO.Value := Idfactura;
             Modulo.QryEncabezadoFacFECHA.Value      := StrToDateTime(SQLDateTime);
-            Modulo.QryEncabezadoFacID_CLIENTE.Value := StrToInt(Edit7.Text);
+            Modulo.QryEncabezadoFacCLIENTE.Value := StrToInt(Edit7.Text);
             Modulo.QryEncabezadoFacTOTAL.Value      := StrToInt(Edit13.Text);
-
-
 
             Modulo.QryEncabezadoFac.Post;
 
@@ -490,10 +488,10 @@ begin
 
               Modulo.Dtconexion.BeginTrans;     //INICIO LA TRANSACCION DEL DETALLE
 
-              Modulo.QryDetalleFacID_FACTURA.Value  := Idfactura;
-              Modulo.QryDetalleFacID_PRODUCTO.Value := StrToInt(Edit10.Text);
-              Modulo.QryDetalleFacCANTIDAD.Value    := Trim(Edit11.Text);
-              Modulo.QryDetalleFacVALOR.Value       := StrToInt(Edit12.Text);
+              Modulo.QryDetalleFacNUMERO.Value   := Idfactura;
+              Modulo.QryDetalleFacPRODUCTO.Value := StrToInt(Edit10.Text);
+              Modulo.QryDetalleFacCANTIDAD.Value := Trim(Edit11.Text);
+              Modulo.QryDetalleFacVALOR.Value    := StrToInt(Edit12.Text);
 
               Modulo.QryDetalleFac.Post;
 
@@ -544,8 +542,8 @@ begin
 
         Modulo.Dtconexion.BeginTrans;     //INICIO LA TRANSACCION DEL DETALLE
 
-        Modulo.QryDetalleFacID_FACTURA.Value  := QryVerFacturasID_FACTURA.Value;
-        Modulo.QryDetalleFacID_PRODUCTO.Value := StrToInt(Edit10.Text);
+        Modulo.QryDetalleFacNUMERO.Value  := QryVerFacturasNUMERO.Value;
+        Modulo.QryDetalleFacPRODUCTO.Value := StrToInt(Edit10.Text);
         Modulo.QryDetalleFacCANTIDAD.Value    := Trim(Edit11.Text);
         Modulo.QryDetalleFacVALOR.Value       := StrToInt(Edit12.Text);
 
@@ -557,8 +555,8 @@ begin
 
           Modulo.QryActEnca.Close;
           Modulo.QryActEnca.SQL.Clear;
-          Modulo.QryActEnca.SQL.Add('SELECT * FROM CABEZA_FACTURA WHERE ID_FACTURA = :ID_FACTURA ');
-          Modulo.QryActEnca.Parameters[0].Value := QryVerFacturasID_FACTURA.Value;
+          Modulo.QryActEnca.SQL.Add('SELECT * FROM CABEZA_FACTURA WHERE NUMERO = :ID_FACTURA ');
+          Modulo.QryActEnca.Parameters[0].Value := QryVerFacturasNUMERO.Value;
           Modulo.QryActEnca.Open;
           Modulo.QryActEnca.Edit;
 
@@ -594,14 +592,14 @@ begin
   //VER DETALLE DEL REGISTRO
   QryVerClientes.Close;
   QryVerClientes.SQL.Clear;
-  QryVerClientes.SQL.Add(' SELECT * FROM CLIENTES WHERE ID_CLIENTE = :ID_CLIENTE ');
-  QryVerClientes.Parameters[0].Value := Modulo.QryClientesID_CLIENTE.Value;
+  QryVerClientes.SQL.Add(' SELECT * FROM CLIENTES WHERE CLIENTE = :ID_CLIENTE ');
+  QryVerClientes.Parameters[0].Value := Modulo.QryClientesCLIENTE.Value;
   QryVerClientes.Open;
 
   if Modulo.QryClientes.RecordCount > 0 then
   begin
-    Application.MessageBox(PWideChar('Datos: '+sLineBreak+'N° Doc '+ IntToStr(QryVerClientesID_CLIENTE.Value) +' '+
-    sLineBreak +'Nombre: '+ QryVerClientesNOMBRE.Value + sLineBreak +'Direccion: '+
+    Application.MessageBox(PWideChar('Datos: '+sLineBreak+'N° Doc '+ IntToStr(QryVerClientesCLIENTE.Value) +' '+
+    sLineBreak +'Nombre: '+ QryVerClientesNOMBRE_CLIENTE.Value + sLineBreak +'Direccion: '+
     QryVerClientesDIRECCION.Value  ), 'Información', MB_ICONINFORMATION);
 
   end;
@@ -616,7 +614,7 @@ begin
   begin
     Modulo.QryProductos.close;
     Modulo.QryProductos.SQL.Clear;
-    Modulo.QryProductos.SQL.Add(' SELECT * FROM PRODUCTOS WHERE ID_PRODUCTO = :ID_PRODUCTO ');
+    Modulo.QryProductos.SQL.Add(' SELECT * FROM PRODUCTOS WHERE PRODUCTO = :ID_PRODUCTO ');
     Modulo.QryProductos.Parameters[0].Value := StrToInt(Edit10.Text);
     Modulo.QryProductos.Open;
 
@@ -627,7 +625,7 @@ begin
     end
     else
     begin
-      Edit15.Text := Modulo.QryProductosNOMBRE.Value;
+      Edit15.Text := Modulo.QryProductosNOMBRE_PRODUCTO.Value;
       Edit12.Text := Modulo.QryProductosVALOR.Value;
       Edit11.Text := '1';
       Edit11.SetFocus;
@@ -656,7 +654,7 @@ begin
   begin
     Modulo.QryClientes.close;
     Modulo.QryClientes.SQL.Clear;
-    Modulo.QryClientes.SQL.Add(' SELECT * FROM CLIENTES WHERE ID_CLIENTE = :ID_CLIENTE ');
+    Modulo.QryClientes.SQL.Add(' SELECT * FROM CLIENTES WHERE CLIENTE = :ID_CLIENTE ');
     Modulo.QryClientes.Parameters[0].Value := StrToInt(Edit7.Text);
     Modulo.QryClientes.Open;
 
@@ -667,7 +665,7 @@ begin
     end
     else
     begin
-      Edit14.Text := Modulo.QryClientesNOMBRE.Value;
+      Edit14.Text := Modulo.QryClientesNOMBRE_CLIENTE.Value;
       Edit10.SetFocus;
     end;
   end;
@@ -677,8 +675,8 @@ end;
 procedure TfrmPrincipal.Editar1Click(Sender: TObject);
 begin
 
-  Edit4.Text := IntToStr(Modulo.QryClientesID_CLIENTE.Value);
-  Edit5.Text := Modulo.QryClientesNOMBRE.Value;
+  Edit4.Text := IntToStr(Modulo.QryClientesCLIENTE.Value);
+  Edit5.Text := Modulo.QryClientesNOMBRE_CLIENTE.Value;
   Edit6.Text := Modulo.QryClientesDIRECCION.Value;
 
   Edit4.Enabled := False
@@ -690,8 +688,8 @@ begin
   //VER DETALLE DEL REGISTRO
   QryVerClientes.Close;
   QryVerClientes.SQL.Clear;
-  QryVerClientes.SQL.Add(' DELETE FROM CLIENTES WHERE ID_CLIENTE = :ID_CLIENTE ');
-  QryVerClientes.Parameters[0].Value := Modulo.QryClientesID_CLIENTE.Value;
+  QryVerClientes.SQL.Add(' DELETE FROM CLIENTES WHERE CLIENTE = :ID_CLIENTE ');
+  QryVerClientes.Parameters[0].Value := Modulo.QryClientesCLIENTE.Value;
   QryVerClientes.ExecSQL;
 
   RefreshTable;
@@ -741,14 +739,14 @@ begin
  //VER DETALLE DEL REGISTRO
   QryVerProductos.Close;
   QryVerProductos.SQL.Clear;
-  QryVerProductos.SQL.Add(' SELECT * FROM PRODUCTOS WHERE ID_PRODUCTO = :ID_PRODUCTO ');
-  QryVerProductos.Parameters[0].Value := Modulo.QryProductosID_PRODUCTO.Value;
+  QryVerProductos.SQL.Add(' SELECT * FROM PRODUCTOS WHERE PRODUCTO = :ID_PRODUCTO ');
+  QryVerProductos.Parameters[0].Value := Modulo.QryProductosPRODUCTO.Value;
   QryVerProductos.Open;
 
   if Modulo.QryProductos.RecordCount > 0 then
   begin
-    Application.MessageBox(PWideChar('Datos del producto: '+sLineBreak+'N° Pro '+ IntToStr(Modulo.QryProductosID_PRODUCTO.Value) +' '+
-    sLineBreak +'Nombre: '+ Modulo.QryProductosNOMBRE.Value + sLineBreak +'valor: '+
+    Application.MessageBox(PWideChar('Datos del producto: '+sLineBreak+'N° Pro '+ IntToStr(Modulo.QryProductosPRODUCTO.Value) +' '+
+    sLineBreak +'Nombre: '+ Modulo.QryProductosNOMBRE_PRODUCTO.Value + sLineBreak +'valor: '+
     Modulo.QryProductosVALOR.Value  ), 'Información', MB_ICONINFORMATION);
 
   end;
@@ -757,7 +755,7 @@ end;
 
 procedure TfrmPrincipal.MenuItem2Click(Sender: TObject);
 begin
-  Edit9.Text := Modulo.QryProductosNOMBRE.Value;
+  Edit9.Text := Modulo.QryProductosNOMBRE_PRODUCTO.Value;
   Edit8.Text := Modulo.QryProductosVALOR.Value;
   ActProducto := True;
 end;
@@ -767,8 +765,8 @@ begin
   //ELIMINAR PRODUCTOS
   QryVerProductos.Close;
   QryVerProductos.SQL.Clear;
-  QryVerProductos.SQL.Add(' DELETE FROM PRODUCTOS WHERE ID_PRODUCTO = :ID_PRODUCTO ');
-  QryVerProductos.Parameters[0].Value := Modulo.QryProductosID_PRODUCTO.Value;
+  QryVerProductos.SQL.Add(' DELETE FROM PRODUCTOS WHERE PRODUCTO = :ID_PRODUCTO ');
+  QryVerProductos.Parameters[0].Value := Modulo.QryProductosPRODUCTO.Value;
   QryVerProductos.ExecSQL;
 
   RefreshTable;
@@ -782,17 +780,17 @@ begin
    try
     FrmDetalleFactura.QryDetallesFactura.Close;
     FrmDetalleFactura.QryDetallesFactura.SQL.Clear;
-    FrmDetalleFactura.QryDetallesFactura.SQL.Add(' SELECT CF.ID_FACTURA, CF.FECHA, C.ID_CLIENTE, C.NOMBRE, CF.TOTAL,'+
-    ' P.ID_PRODUCTO, P.ID_PRODUCTO, DF.CANTIDAD, DF.VALOR FROM CABEZA_FACTURA CF LEFT JOIN DETALLE_FACTURA DF'+
-    ' ON CF.ID_FACTURA=DF.ID_FACTURA INNER JOIN CLIENTES C ON C.ID_CLIENTE=CF.ID_CLIENTE'+
-    ' INNER JOIN PRODUCTOS P ON DF.ID_PRODUCTO=P.ID_PRODUCTO WHERE CF.ID_FACTURA = :ID_FACTURA ');
+    FrmDetalleFactura.QryDetallesFactura.SQL.Add(' SELECT CF.NUMERO, CF.FECHA, C.CLIENTE, C.NOMBRE_CLIENTE, CF.TOTAL,'+
+    ' P.PRODUCTO, P.NOMBRE_PRODUCTO, DF.CANTIDAD, DF.VALOR FROM CABEZA_FACTURA CF LEFT JOIN DETALLE_FACTURA DF ON'+
+    ' CF.NUMERO=DF.NUMERO INNER JOIN CLIENTES C ON C.CLIENTE=CF.CLIENTE INNER JOIN PRODUCTOS P ON'+
+    ' DF.PRODUCTO=P.PRODUCTO WHERE CF.NUMERO = :ID_FACTURA ');
 
-    FrmDetalleFactura.QryDetallesFactura.Parameters[0].Value := QryVerFacturasID_FACTURA.Value;
+    FrmDetalleFactura.QryDetallesFactura.Parameters[0].Value := QryVerFacturasNUMERO.Value;
     FrmDetalleFactura.QryDetallesFactura.Open;
 
-    FrmDetalleFactura.Edit4.Text := FrmDetalleFactura.QryDetallesFacturaID_FACTURA.Value;
-    FrmDetalleFactura.Edit7.Text := IntToStr(FrmDetalleFactura.QryDetallesFacturaID_CLIENTE.Value);
-    FrmDetalleFactura.Edit1.Text := FrmDetalleFactura.QryDetallesFacturaNOMBRE.Value;
+    FrmDetalleFactura.Edit4.Text := FrmDetalleFactura.QryDetallesFacturaNUMERO.Value;
+    FrmDetalleFactura.Edit7.Text := IntToStr(FrmDetalleFactura.QryDetallesFacturaCLIENTE.Value);
+    FrmDetalleFactura.Edit1.Text := FrmDetalleFactura.QryDetallesFacturaNOMBRE_CLIENTE.Value;
     FrmDetalleFactura.Edit3.Text := DateTimeToStr(FrmDetalleFactura.QryDetallesFacturaFECHA.Value);
     FrmDetalleFactura.Edit2.Text := IntToStr(FrmDetalleFactura.QryDetallesFacturaTOTAL.Value);
 
@@ -810,7 +808,7 @@ end;
 
 procedure TfrmPrincipal.MenuItem5Click(Sender: TObject);
 begin
-  Edit7.Text  := IntToStr(QryVerFacturasID_CLIENTE.Value);
+  Edit7.Text  := IntToStr(QryVerFacturasCLIENTE.Value);
   Edit13.Text := IntToStr(QryVerFacturasTOTAL.Value);
   ActFactura := True;
   Edit7.SetFocus;

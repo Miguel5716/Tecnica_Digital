@@ -26,13 +26,13 @@ type
     Label5: TLabel;
     QryDetallesFactura: TADOQuery;
     DtsDetallesFactura: TDataSource;
-    QryDetallesFacturaID_FACTURA: TStringField;
+    QryDetallesFacturaNUMERO: TStringField;
     QryDetallesFacturaFECHA: TDateTimeField;
-    QryDetallesFacturaID_CLIENTE: TLargeintField;
-    QryDetallesFacturaNOMBRE: TStringField;
+    QryDetallesFacturaCLIENTE: TLargeintField;
+    QryDetallesFacturaNOMBRE_CLIENTE: TStringField;
     QryDetallesFacturaTOTAL: TLargeintField;
-    QryDetallesFacturaID_PRODUCTO: TAutoIncField;
-    QryDetallesFacturaID_PRODUCTO_1: TAutoIncField;
+    QryDetallesFacturaPRODUCTO: TAutoIncField;
+    QryDetallesFacturaNOMBRE_PRODUCTO: TStringField;
     QryDetallesFacturaCANTIDAD: TStringField;
     QryDetallesFacturaVALOR: TIntegerField;
   private

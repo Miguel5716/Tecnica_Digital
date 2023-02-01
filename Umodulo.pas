@@ -11,30 +11,30 @@ type
     DtConODBC: TADOConnection;
     Dtconexion: TADOConnection;
     QryClientes: TADOQuery;
-    QryClientesID_CLIENTE: TLargeintField;
-    QryClientesNOMBRE: TStringField;
-    QryClientesDIRECCION: TStringField;
     QryProductos: TADOQuery;
     QryEncabezadoFac: TADOQuery;
     QryDetalleFac: TADOQuery;
-    QryProductosID_PRODUCTO: TAutoIncField;
-    QryProductosNOMBRE: TStringField;
-    QryProductosVALOR: TStringField;
     QryConsecutivo: TADOQuery;
-    QryEncabezadoFacFECHA: TDateTimeField;
-    QryEncabezadoFacID_CLIENTE: TLargeintField;
-    QryEncabezadoFacTOTAL: TLargeintField;
-    QryEncabezadoFacID_FACTURA: TStringField;
     QryConsecutivoCONSECUTIVO: TStringField;
     QryActEnca: TADOQuery;
-    QryDetalleFacID_FACTURA: TStringField;
-    QryDetalleFacID_PRODUCTO: TIntegerField;
+    QryClientesCLIENTE: TLargeintField;
+    QryClientesNOMBRE_CLIENTE: TStringField;
+    QryClientesDIRECCION: TStringField;
+    QryEncabezadoFacNUMERO: TStringField;
+    QryEncabezadoFacFECHA: TDateTimeField;
+    QryEncabezadoFacCLIENTE: TLargeintField;
+    QryEncabezadoFacTOTAL: TLargeintField;
+    QryActEncaNUMERO: TStringField;
+    QryActEncaFECHA: TDateTimeField;
+    QryActEncaCLIENTE: TLargeintField;
+    QryActEncaTOTAL: TLargeintField;
+    QryDetalleFacNUMERO: TStringField;
+    QryDetalleFacPRODUCTO: TIntegerField;
     QryDetalleFacCANTIDAD: TStringField;
     QryDetalleFacVALOR: TIntegerField;
-    QryActEncaID_FACTURA: TStringField;
-    QryActEncaFECHA: TDateTimeField;
-    QryActEncaID_CLIENTE: TLargeintField;
-    QryActEncaTOTAL: TLargeintField;
+    QryProductosPRODUCTO: TAutoIncField;
+    QryProductosNOMBRE_PRODUCTO: TStringField;
+    QryProductosVALOR: TStringField;
   private
     { Private declarations }
   public

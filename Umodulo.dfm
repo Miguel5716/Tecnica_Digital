@@ -45,11 +45,11 @@ object Modulo: TModulo
       'SELECT * FROM CLIENTES')
     Left = 24
     Top = 64
-    object QryClientesID_CLIENTE: TLargeintField
-      FieldName = 'ID_CLIENTE'
+    object QryClientesCLIENTE: TLargeintField
+      FieldName = 'CLIENTE'
     end
-    object QryClientesNOMBRE: TStringField
-      FieldName = 'NOMBRE'
+    object QryClientesNOMBRE_CLIENTE: TStringField
+      FieldName = 'NOMBRE_CLIENTE'
       Size = 75
     end
     object QryClientesDIRECCION: TStringField
@@ -65,12 +65,12 @@ object Modulo: TModulo
       'SELECT * FROM PRODUCTOS')
     Left = 24
     Top = 112
-    object QryProductosID_PRODUCTO: TAutoIncField
-      FieldName = 'ID_PRODUCTO'
+    object QryProductosPRODUCTO: TAutoIncField
+      FieldName = 'PRODUCTO'
       ReadOnly = True
     end
-    object QryProductosNOMBRE: TStringField
-      FieldName = 'NOMBRE'
+    object QryProductosNOMBRE_PRODUCTO: TStringField
+      FieldName = 'NOMBRE_PRODUCTO'
       Size = 75
     end
     object QryProductosVALOR: TStringField
@@ -86,15 +86,15 @@ object Modulo: TModulo
       'SELECT * FROM CABEZA_FACTURA')
     Left = 24
     Top = 160
-    object QryEncabezadoFacID_FACTURA: TStringField
-      FieldName = 'ID_FACTURA'
+    object QryEncabezadoFacNUMERO: TStringField
+      FieldName = 'NUMERO'
       Size = 15
     end
     object QryEncabezadoFacFECHA: TDateTimeField
       FieldName = 'FECHA'
     end
-    object QryEncabezadoFacID_CLIENTE: TLargeintField
-      FieldName = 'ID_CLIENTE'
+    object QryEncabezadoFacCLIENTE: TLargeintField
+      FieldName = 'CLIENTE'
     end
     object QryEncabezadoFacTOTAL: TLargeintField
       FieldName = 'TOTAL'
@@ -108,12 +108,12 @@ object Modulo: TModulo
       'SELECT * FROM DETALLE_FACTURA')
     Left = 24
     Top = 208
-    object QryDetalleFacID_FACTURA: TStringField
-      FieldName = 'ID_FACTURA'
+    object QryDetalleFacNUMERO: TStringField
+      FieldName = 'NUMERO'
       Size = 15
     end
-    object QryDetalleFacID_PRODUCTO: TIntegerField
-      FieldName = 'ID_PRODUCTO'
+    object QryDetalleFacPRODUCTO: TIntegerField
+      FieldName = 'PRODUCTO'
     end
     object QryDetalleFacCANTIDAD: TStringField
       FieldName = 'CANTIDAD'
@@ -144,15 +144,15 @@ object Modulo: TModulo
       'SELECT * FROM CABEZA_FACTURA')
     Left = 80
     Top = 160
-    object QryActEncaID_FACTURA: TStringField
-      FieldName = 'ID_FACTURA'
+    object QryActEncaNUMERO: TStringField
+      FieldName = 'NUMERO'
       Size = 15
     end
     object QryActEncaFECHA: TDateTimeField
       FieldName = 'FECHA'
     end
-    object QryActEncaID_CLIENTE: TLargeintField
-      FieldName = 'ID_CLIENTE'
+    object QryActEncaCLIENTE: TLargeintField
+      FieldName = 'CLIENTE'
     end
     object QryActEncaTOTAL: TLargeintField
       FieldName = 'TOTAL'

@@ -195,25 +195,25 @@ object FrmDetalleFactura: TFrmDetalleFactura
         Columns = <
           item
             Expanded = False
-            FieldName = 'ID_FACTURA'
-            Width = 76
+            FieldName = 'NUMERO'
+            Width = 99
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'ID_PRODUCTO'
-            Width = 53
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'VALOR'
-            Width = 87
+            FieldName = 'PRODUCTO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'CANTIDAD'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'VALOR'
+            Width = 64
             Visible = True
           end>
       end
@@ -225,38 +225,40 @@ object FrmDetalleFactura: TFrmDetalleFactura
     Parameters = <>
     SQL.Strings = (
       
-        'SELECT CF.ID_FACTURA, CF.FECHA, C.ID_CLIENTE, C.NOMBRE, CF.TOTAL' +
-        ', P.ID_PRODUCTO, P.ID_PRODUCTO, DF.CANTIDAD, DF.VALOR FROM CABEZ' +
-        'A_FACTURA CF'
-      'LEFT JOIN DETALLE_FACTURA DF ON CF.ID_FACTURA=DF.ID_FACTURA'
-      'INNER JOIN CLIENTES C ON C.ID_CLIENTE=CF.ID_CLIENTE'
-      'INNER JOIN PRODUCTOS P ON DF.ID_PRODUCTO=P.ID_PRODUCTO')
+        'SELECT CF.NUMERO, CF.FECHA, C.CLIENTE, C.NOMBRE_CLIENTE, CF.TOTA' +
+        'L,'
+      
+        'P.PRODUCTO, P.NOMBRE_PRODUCTO, DF.CANTIDAD, DF.VALOR FROM CABEZA' +
+        '_FACTURA CF '
+      'LEFT JOIN DETALLE_FACTURA DF ON CF.NUMERO=DF.NUMERO'
+      'INNER JOIN CLIENTES C ON C.CLIENTE=CF.CLIENTE'
+      'INNER JOIN PRODUCTOS P ON DF.PRODUCTO=P.PRODUCTO ')
     Left = 392
     Top = 104
-    object QryDetallesFacturaID_FACTURA: TStringField
-      FieldName = 'ID_FACTURA'
+    object QryDetallesFacturaNUMERO: TStringField
+      FieldName = 'NUMERO'
       Size = 15
     end
     object QryDetallesFacturaFECHA: TDateTimeField
       FieldName = 'FECHA'
     end
-    object QryDetallesFacturaID_CLIENTE: TLargeintField
-      FieldName = 'ID_CLIENTE'
+    object QryDetallesFacturaCLIENTE: TLargeintField
+      FieldName = 'CLIENTE'
     end
-    object QryDetallesFacturaNOMBRE: TStringField
-      FieldName = 'NOMBRE'
+    object QryDetallesFacturaNOMBRE_CLIENTE: TStringField
+      FieldName = 'NOMBRE_CLIENTE'
       Size = 75
     end
     object QryDetallesFacturaTOTAL: TLargeintField
       FieldName = 'TOTAL'
     end
-    object QryDetallesFacturaID_PRODUCTO: TAutoIncField
-      FieldName = 'ID_PRODUCTO'
+    object QryDetallesFacturaPRODUCTO: TAutoIncField
+      FieldName = 'PRODUCTO'
       ReadOnly = True
     end
-    object QryDetallesFacturaID_PRODUCTO_1: TAutoIncField
-      FieldName = 'ID_PRODUCTO_1'
-      ReadOnly = True
+    object QryDetallesFacturaNOMBRE_PRODUCTO: TStringField
+      FieldName = 'NOMBRE_PRODUCTO'
+      Size = 75
     end
     object QryDetallesFacturaCANTIDAD: TStringField
       FieldName = 'CANTIDAD'

@@ -152,7 +152,6 @@ object frmPrincipal: TfrmPrincipal
       object TabSheet2: TTabSheet
         Caption = 'ACTIVIDAD 3'
         ImageIndex = 1
-        ExplicitLeft = 0
         object Label11: TLabel
           Left = 20
           Top = 16
@@ -378,19 +377,17 @@ object frmPrincipal: TfrmPrincipal
                 Columns = <
                   item
                     Expanded = False
-                    FieldName = 'ID_FACTURA'
-                    Width = 74
+                    FieldName = 'NUMERO'
                     Visible = True
                   end
                   item
                     Expanded = False
                     FieldName = 'FECHA'
-                    Width = 141
                     Visible = True
                   end
                   item
                     Expanded = False
-                    FieldName = 'ID_CLIENTE'
+                    FieldName = 'CLIENTE'
                     Visible = True
                   end
                   item
@@ -440,6 +437,10 @@ object frmPrincipal: TfrmPrincipal
           object TabSheet4: TTabSheet
             Caption = 'REGISTRAR CLIENTE'
             ImageIndex = 1
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object Label7: TLabel
               Left = 19
               Top = 16
@@ -575,14 +576,13 @@ object frmPrincipal: TfrmPrincipal
                 Columns = <
                   item
                     Expanded = False
-                    FieldName = 'ID_CLIENTE'
-                    Title.Caption = 'N'#176' DOC CLIENTE'
-                    Width = 104
+                    FieldName = 'CLIENTE'
                     Visible = True
                   end
                   item
                     Expanded = False
-                    FieldName = 'NOMBRE'
+                    FieldName = 'NOMBRE_CLIENTE'
+                    Width = 64
                     Visible = True
                   end
                   item
@@ -597,6 +597,10 @@ object frmPrincipal: TfrmPrincipal
           object TabSheet5: TTabSheet
             Caption = 'INGRESAR PRODUCTO'
             ImageIndex = 2
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object Label12: TLabel
               Left = 18
               Top = 106
@@ -712,13 +716,13 @@ object frmPrincipal: TfrmPrincipal
                 Columns = <
                   item
                     Expanded = False
-                    FieldName = 'ID_PRODUCTO'
-                    Width = 80
+                    FieldName = 'PRODUCTO'
                     Visible = True
                   end
                   item
                     Expanded = False
-                    FieldName = 'NOMBRE'
+                    FieldName = 'NOMBRE_PRODUCTO'
+                    Width = 64
                     Visible = True
                   end
                   item
@@ -1001,11 +1005,11 @@ object frmPrincipal: TfrmPrincipal
       'SELECT * FROM CLIENTES')
     Left = 824
     Top = 40
-    object QryVerClientesID_CLIENTE: TLargeintField
-      FieldName = 'ID_CLIENTE'
+    object QryVerClientesCLIENTE: TLargeintField
+      FieldName = 'CLIENTE'
     end
-    object QryVerClientesNOMBRE: TStringField
-      FieldName = 'NOMBRE'
+    object QryVerClientesNOMBRE_CLIENTE: TStringField
+      FieldName = 'NOMBRE_CLIENTE'
       Size = 75
     end
     object QryVerClientesDIRECCION: TStringField
@@ -1270,12 +1274,12 @@ object frmPrincipal: TfrmPrincipal
       'SELECT * FROM PRODUCTOS')
     Left = 824
     Top = 8
-    object QryVerProductosID_PRODUCTO: TAutoIncField
-      FieldName = 'ID_PRODUCTO'
+    object QryVerProductosPRODUCTO: TAutoIncField
+      FieldName = 'PRODUCTO'
       ReadOnly = True
     end
-    object QryVerProductosNOMBRE: TStringField
-      FieldName = 'NOMBRE'
+    object QryVerProductosNOMBRE_PRODUCTO: TStringField
+      FieldName = 'NOMBRE_PRODUCTO'
       Size = 75
     end
     object QryVerProductosVALOR: TStringField
@@ -1291,15 +1295,15 @@ object frmPrincipal: TfrmPrincipal
       'SELECT * FROM CABEZA_FACTURA')
     Left = 824
     Top = 88
-    object QryVerFacturasID_FACTURA: TStringField
-      FieldName = 'ID_FACTURA'
+    object QryVerFacturasNUMERO: TStringField
+      FieldName = 'NUMERO'
       Size = 15
     end
     object QryVerFacturasFECHA: TDateTimeField
       FieldName = 'FECHA'
     end
-    object QryVerFacturasID_CLIENTE: TLargeintField
-      FieldName = 'ID_CLIENTE'
+    object QryVerFacturasCLIENTE: TLargeintField
+      FieldName = 'CLIENTE'
     end
     object QryVerFacturasTOTAL: TLargeintField
       FieldName = 'TOTAL'
